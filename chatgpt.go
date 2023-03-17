@@ -100,6 +100,10 @@ func (c *Client) NewThread() *Thread {
 	return &Thread{client: *c}
 }
 
+func (c *Client) Opts() *Opts {
+	return &c.opts
+}
+
 func (c *Client) say(messages []Message) (*Response, error) {
 	url := c.ApiEndpoint
 	header := http.Header{}
