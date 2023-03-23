@@ -101,6 +101,8 @@ func (t *Thread) Talk(content string) *Response {
 
 					return t.Talk(content)
 				}
+			} else {
+				return &Response{Error: cast}
 			}
 		}
 
