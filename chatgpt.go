@@ -13,7 +13,12 @@ import (
 	"github.com/kklab-com/goth-kkutil/value"
 )
 
-const DefaultModel = "gpt-3.5-turbo"
+const (
+	GPT3_5_TURBO = "gpt-3.5-turbo"
+	GPT4         = "gpt-4"
+	GPT4_32K     = "gpt-4-32k"
+	DefaultModel = GPT3_5_TURBO
+)
 const DefaultAPIEndpoint = "https://api.openai.com/v1/chat/completions"
 
 type FinishReason string
