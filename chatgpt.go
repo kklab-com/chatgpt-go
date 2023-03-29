@@ -34,12 +34,12 @@ type Opts struct {
 	FrequencyPenalty float32        `json:"frequency_penalty,omitempty"`
 	LogitBias        map[string]int `json:"logit_bias,omitempty"`
 	User             string         `json:"user,omitempty"`
-	Stream           bool           `json:"stream,omitempty"`
 }
 
 type Request struct {
 	Messages []Message `json:"messages"`
 	Opts
+	Stream bool `json:"stream,omitempty"`
 }
 
 type Usage struct {
@@ -229,10 +229,10 @@ func (d *StreamScanner) Next() (*StreamEvent, error) {
 
 func (c *Client) Stream(messages []Message) (*StreamScanner, error) {
 	opts := c.opts
-	opts.Stream = true
 	request, _ := http.NewRequest("POST", c.ApiEndpoint, bytes.NewBufferString(value.JsonMarshal(Request{
 		Messages: messages,
 		Opts:     opts,
+		Stream:   true,
 	})))
 
 	request.Header = http.Header{}
