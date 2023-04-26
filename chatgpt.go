@@ -91,6 +91,7 @@ const (
 type Message struct {
 	Role    Role   `json:"role"`
 	Content string `json:"content"`
+	Name    string `json:"name"`
 }
 
 type Client struct {
